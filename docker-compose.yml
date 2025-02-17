@@ -1,20 +1,19 @@
-version: '3.8'
+version: "3.8"
+
 services:
   backend:
     build:
       context: ./liton-backend
       dockerfile: Dockerfile
-    container_name: liton-backend
-    restart: always
-    environment:
-      - DB_HOST=database
-      - DB_PORT=5432
-      - DB_USER=postgres
-      - DB_PASSWORD=postgres
-      - DB_NAME=liton_db
-      - NODE_ENV=production
     ports:
       - "3000:3000"
+    environment:
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: liton_db
+      NODE_ENV: production
     depends_on:
       - database
 
@@ -22,8 +21,6 @@ services:
     build:
       context: ./liton-frontend
       dockerfile: Dockerfile
-    container_name: liton-frontend
-    restart: always
     ports:
       - "5000:5000"
     depends_on:
@@ -31,16 +28,10 @@ services:
 
   database:
     image: postgres:14-alpine
-    container_name: liton-db
-    restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: liton_db
     ports:
       - "5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-
-volumes:
-  pgdata:
+    # Remova volumes locais se não tiver armazenamento persistente configurado na Koyeb
