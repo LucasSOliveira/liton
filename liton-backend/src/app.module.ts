@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { BooksModule } from './books/books.module';
+import { HealthModule } from './health/health.module';
 import { OpenLibraryModule } from './openlibrary/openlibrary.module';
 import { Book } from './books/entities/book.entity';
 
@@ -40,6 +41,7 @@ import { AuthModule } from './auth/auth.module';
     ClientsModule,
     OrdersModule,
     AuthModule,
+    HealthModule,
   ],
   controllers: [],
   providers: [],

@@ -14,6 +14,11 @@ services:
       DB_PASSWORD: postgres
       DB_NAME: liton_db
       NODE_ENV: production
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
     depends_on:
       - database
 
@@ -34,4 +39,8 @@ services:
       POSTGRES_DB: liton_db
     ports:
       - "5432:5432"
-    # Remova volumes locais se não tiver armazenamento persistente configurado na Koyeb
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
