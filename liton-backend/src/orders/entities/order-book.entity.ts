@@ -1,4 +1,4 @@
-// filepath: /c:/Users/lucas/Documents/projects/liton/liton-backend/src/orders/entities/order-book.entity.ts
+// /src/orders/entities/order-book.entity.ts
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { Order } from './order.entity';
 import { Book } from '../../books/entities/book.entity';

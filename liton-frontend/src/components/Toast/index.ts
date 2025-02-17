@@ -22,7 +22,6 @@ export default function createToast(params: ToastParams) {
         icon = "warning";
     }
 
-    // Cria ou seleciona a container de toasts
     const toastIndex = toastList.length + 1;
     let toastContainer = document.getElementById("toast-container");
 

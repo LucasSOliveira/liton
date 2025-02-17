@@ -49,14 +49,12 @@ const { t } = useI18n();
 const showScrollButton = ref(false);
 
 function handleScroll() {
-  // Checa se deve carregar mais livros (scroll infinito)
   const scrollPos = window.innerHeight + window.scrollY;
   const threshold = document.documentElement.offsetHeight - 300;
   if (scrollPos >= threshold) {
     loadMoreBooks();
   }
 
-  // Atualiza a visibilidade do botão de voltar ao topo
   showScrollButton.value = window.scrollY > 100;
 }
 function scrollToTop() {

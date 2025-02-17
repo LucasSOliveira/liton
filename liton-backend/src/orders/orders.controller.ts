@@ -40,7 +40,6 @@ export class OrdersController {
         cardValidity?: string;
         ticketNumber?: string;
       };
-      // Agora o front envia os dados do livro e os campos extras
       orderBooks: {
         productId: number;
         startRental: Date;
@@ -50,17 +49,13 @@ export class OrdersController {
     },
     @Request() req,
   ): Promise<Order> {
-    // Obtém o ID do cliente a partir do token JWT
     const clientId = req.user.id;
 
-    // Busca o cliente completo
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     const client = await this.clientsService.findOne(clientId);
     if (!client) {
       throw new NotFoundException(`Client with id ${clientId} not found`);
     }
 
-    // Para cada item enviado, busca o livro completo com base no productId
     const orderBooksData: {
       book: Book;
       startRental: Date;
@@ -80,7 +75,6 @@ export class OrdersController {
       });
     }
 
-    // Cria o pedido com os dados completos
     return this.ordersService.create({
       client,
       shippingValue: orderData.shippingValue,

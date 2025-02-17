@@ -21,13 +21,10 @@ export class BooksService {
     const savedBooks: Book[] = [];
 
     for (const doc of docs) {
-      // Verifica se existe cover_i ou cover_edition_key; se nenhum existir, ignora o livro.
       if (!doc.cover_i && !doc.cover_edition_key) continue;
 
-      // Usa cover_i se disponível; caso contrário, utiliza cover_edition_key.
       const coverid = doc.cover_i || doc.cover_edition_key;
 
-      // Procura se o livro já existe no banco, usando o coverid obtido.
       const existingBook = await this.bookRepository.findOne({
         where: { coverid },
       });
@@ -35,7 +32,6 @@ export class BooksService {
       if (existingBook) {
         savedBooks.push(existingBook);
       } else {
-        // Cria a URL da capa usando coverid
         const coverUrl = coverid
           ? `https://covers.openlibrary.org/b/id/${coverid}-L.jpg`
           : null;
@@ -70,7 +66,6 @@ export class BooksService {
     const savedBooks: Book[] = [];
 
     for (const doc of docs) {
-      // Altera para aceitar cover_id ou cover_edition_key, se necessário
       if (!doc.cover_id && !doc.cover_edition_key) continue;
 
       const coverid = doc.cover_id || doc.cover_edition_key;
@@ -113,17 +108,14 @@ export class BooksService {
     order: 'ASC' | 'DESC' = 'ASC',
     language: string = 'en',
   ): Promise<{ data: Book[]; total: number }> {
-    // Converte '+' para espaço (caso a string venha codificada)
     const decodedSearch = search.replace(/\+/g, ' ');
     const skip = (page - 1) * limit;
 
-    // Define a condição de busca com a string decodificada
     let whereCondition: Record<string, any> = {};
     if (decodedSearch && decodedSearch.trim() !== '') {
       whereCondition = { title: ILike(`%${decodedSearch}%`) };
     }
 
-    // Restante do código igual...
     const fetchResults = async () =>
       await this.bookRepository.findAndCount({
         where: whereCondition,

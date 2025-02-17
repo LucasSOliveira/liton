@@ -3,8 +3,8 @@
   <main class="flex flex-col items-center justify-center h-[calc(100vh-208px)]">
     <section class="w-full max-w-[600px] p-4">
       <Logo @click="goHome" />
-      <h1 class="text-xl">{{ t(`auth.${state.formType}.tittle`) }}</h1>
-      <h3 class="mb-6">{{ t(`auth.${state.formType}.description`) }}</h3>
+      <h1 class="text-xl mt-10">{{ t(`auth.${state.formType}.tittle`) }}</h1>
+      <h3 class="mb-8">{{ t(`auth.${state.formType}.description`) }}</h3>
       <LoginForm v-if="state.formType === 'login'" />
       <SignupForm v-if="state.formType === 'signup'" />
     </section>

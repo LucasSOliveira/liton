@@ -10,29 +10,28 @@ import { ref } from "vue";
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
-const fullPre = t("logo.pre");
-const fullPost = t("logo.suf");
-const pre = ref(fullPre);
-const post = ref(fullPost);
-const finalPre = fullPre.slice(0, 3);
-const finalPost = fullPost.slice(0, 2);
+
+const fullPre = ref(t("logo.pre"));
+const fullPost = ref(t("logo.suf"));
+
+const pre = ref(fullPre.value);
+const post = ref(fullPost.value);
+
+const finalPre = fullPre.value.slice(0, 3);
+const finalPost = fullPost.value.slice(0, 2);
 
 function animateBackspace() {
-  let currentPre = fullPre;
-  let currentPost = fullPost;
   const interval = setInterval(() => {
-    if (currentPre.length > finalPre.length) {
-      currentPre = currentPre.slice(0, -1);
-      pre.value = currentPre;
+    let updated = false;
+    if (pre.value.length > finalPre.length) {
+      pre.value = pre.value.slice(0, -1);
+      updated = true;
     }
-    if (currentPost.length > finalPost.length) {
-      currentPost = currentPost.slice(0, -1);
-      post.value = currentPost;
+    if (post.value.length > finalPost.length) {
+      post.value = post.value.slice(0, -1);
+      updated = true;
     }
-    if (
-      currentPre.length <= finalPre.length &&
-      currentPost.length <= finalPost.length
-    ) {
+    if (!updated) {
       clearInterval(interval);
       pre.value = finalPre;
       post.value = finalPost;

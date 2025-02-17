@@ -1,4 +1,4 @@
-// filepath: /c:/Users/lucas/Documents/projects/liton/liton-backend/src/orders/orders.service.ts
+// /src/orders/orders.service.ts
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';

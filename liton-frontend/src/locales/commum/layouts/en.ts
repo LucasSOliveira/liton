@@ -1,13 +1,13 @@
 const messages = {
     cartAside: {
-        title: "Carrinho",
-        empty: "Seu carrinho está vazio",
+        title: "Cart",
+        empty: "Your cart is empty",
         total: "Total",
-        checkout: "Finalizar compra",
-        remove: "Remover",
-        quantity: "Quantidade",
+        checkout: "Checkout",
+        remove: "Remove",
+        quantity: "Quantity",
         notFound:
-            'Nenhum item no carrinho, adicione alguns selecionando um livro e clicando em "Adicionar ao carrinho"',
+            'No items in the cart, add some by selecting a book and clicking on "Add to cart"',
     },
 };
 

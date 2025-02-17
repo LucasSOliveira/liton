@@ -1,20 +1,26 @@
-# liton-backend/Dockerfile
-FROM node:18-alpine
+# Stage 1: Build
+FROM node:23-alpine as builder
 
-# Define o diretório de trabalho
 WORKDIR /usr/src/app
 
-# Copia o package.json e o package-lock.json (ou yarn.lock)
 COPY package*.json ./
 
-# Instala as dependências
 RUN npm install
 
-# Copia o restante do código
 COPY . .
 
-# Exponha a porta (supondo que o backend rode na porta 3000)
+RUN npm run build
+
+FROM node:23-alpine
+
+WORKDIR /usr/src/app
+
+COPY --from=builder /usr/src/app/package*.json ./
+
+RUN npm install --production
+
+COPY --from=builder /usr/src/app/dist ./dist
+
 EXPOSE 3000
 
-# Comando para iniciar a aplicação
-CMD ["npm", "run", "start:dev"]
+CMD ["node", "dist/main.js"]

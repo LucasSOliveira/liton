@@ -98,8 +98,24 @@ import {
 } from "@/components/ui/pagination";
 import { useOrders } from "@/modules/orders/store/order-composible";
 import { useI18n } from "vue-i18n";
-import { formatDate, formatCurrency, formatPaymentType } from "@/utils";
+import { formatDate, formatCurrency } from "@/utils";
 
 const { t } = useI18n();
 const { state, getOrders } = useOrders();
+
+function formatPaymentType(paymentType: string | undefined): string {
+  if (!paymentType) return "-";
+  let key: string | null = null;
+  switch (paymentType) {
+    case "credit":
+      key = "creditCard"; // Certifique-se de ter esse campo nos arquivos de tradução
+      break;
+    case "ticket":
+      key = "ticket"; // Defina essa chave (por exemplo: { ticket: 'Boleto' })
+      break;
+    default:
+      return "-";
+  }
+  return t(`orders.paymentTypes.${key}`);
+}
 </script>

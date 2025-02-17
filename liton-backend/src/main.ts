@@ -1,7 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as cookieParser from 'cookie-parser';
+import * as crypto from 'crypto';
 
+if (typeof globalThis.crypto === 'undefined') {
+  globalThis.crypto = { randomUUID: crypto.randomUUID } as any;
+}
 const origins =
   process.env.FRONT_ALLOWED ||
   process.env.ORIGIN_PROD ||

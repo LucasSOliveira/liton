@@ -1,4 +1,4 @@
-// filepath: /c:/Users/lucas/Documents/projects/liton/liton-backend/src/orders/entities/order.entity.ts
+// /src/orders/entities/order.entity.ts
 import {
   Entity,
   PrimaryGeneratedColumn,

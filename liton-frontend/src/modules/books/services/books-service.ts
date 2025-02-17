@@ -1,8 +1,5 @@
-import axios from "axios";
+import api from "@/config/api-config";
 import Toast from "@/components/Toast"
-
-const baseUrl = import.meta.env.VITE_API_URL;
-
 export async function fetchBooks(
   search: string = "",
   page: number = 1,
@@ -21,8 +18,8 @@ export async function fetchBooks(
         lang: lang === "pt-BR" ? "pt" : lang,
     });
 
-    const url = `${baseUrl}/books?${query}`;
-    const response = await axios.get(url);
+    const url = `/books?${query}`;
+    const response = await api.get(url);
     return response.data;
   } catch (error: any) {
     Toast({ message: error, type: "error" });

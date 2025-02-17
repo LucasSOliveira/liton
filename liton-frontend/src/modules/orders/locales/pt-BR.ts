@@ -11,6 +11,10 @@ const orders = {
         },
         errors: {
             fetchOrders: 'Erro ao buscar pedidos',
+        },
+        paymentTypes: {
+            creditCard: 'Cartão de crédito',
+            debitCard: 'Cartão de débito',
         }
     }
 }

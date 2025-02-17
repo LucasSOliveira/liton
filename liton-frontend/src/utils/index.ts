@@ -50,14 +50,3 @@ export function truncateNames(names: any): string {
 
   return items.join(', ');
 }
-
-export function formatPaymentType(paymentType: any): string {
-  switch (paymentType) {
-    case 'credit':
-      return 'Cartão de crédito';
-    case 'ticket':
-      return 'Boleto';
-    default:
-      return '-';
-  }
-}

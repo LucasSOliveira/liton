@@ -1,16 +1,20 @@
 const orders = {
     orders: {
         title: 'Pedidos',
-        goBack: 'Volver',
-        listEmpty: 'No hay ningún pedido creado. Vuelve al inicio y haz un pedido!',
+        goBack: 'Voltar',
+        listEmpty: 'Nem um pedido criado. Volte ao inicio e faça um pedido!',
         tableColumns: {
             id: 'Pedido',
-            data: 'Fecha del pedido',
-            paymentType: 'Tipo de pago',
+            data: 'Data do pedido',
+            paymentType: 'Tipo de pagamento',
             total: 'Total',
         },
         errors: {
-            fetchOrders: 'Error al obtener los pedidos',
+            fetchOrders: 'Erro ao buscar pedidos',
+        },
+        paymentTypes: {
+            creditCard: 'Cartão de crédito',
+            debitCard: 'Cartão de débito',
         }
     }
 }

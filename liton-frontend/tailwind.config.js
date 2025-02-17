@@ -1,4 +1,3 @@
-// filepath: /c:/Users/lucas/Documents/projects/liton/liton-frontend/tailwind.config.js
 const animate = require("tailwindcss-animate");
 
 /** @type {import('tailwindcss').Config} */

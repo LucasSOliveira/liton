@@ -20,8 +20,6 @@ export class OpenLibraryService {
     const params = new URLSearchParams();
 
     if (query && query.trim() !== '') {
-      // Formata a query para que busque pelo título conforme o formato descoberto:
-      // Exemplo: "title:carta+entre+amigos"
       const formattedQuery = `title:${query.replace(/\s+/g, '+')}`;
       params.append('q', formattedQuery);
     }
@@ -34,7 +32,6 @@ export class OpenLibraryService {
       params.append('limit', limit.toString());
     }
 
-    // Garante que o modo de busca seja "everything"
     params.append('mode', 'everything');
 
     const url = `${this.baseUrl}/search.json?${params.toString()}`;
