@@ -1,11 +1,9 @@
 import { defineStore } from "pinia";
-import { reactive} from "vue";
+import { reactive } from "vue";
 import { createOrder } from "@/modules/cart/services/cart-service";
 import type { Order } from "@/types/order-type";
 import type { BookOrder } from "@/types/books-type";
-import locale from "@/locales";
 
-const { t } = locale.global;
 export const useCartStore = defineStore("cart", () => {
   const state = reactive({
     cartState: {
@@ -38,7 +36,7 @@ export const useCartStore = defineStore("cart", () => {
   function removeBookOrders(productId: number) {
     const findIndex = state.newOrder.bookOrders.findIndex((bookOrder) => bookOrder.productId === productId);
     state.newOrder.bookOrders.splice(findIndex, 1);
-    
+
     const totalValue = state.newOrder.bookOrders.reduce((acc, bookOrder) => acc + bookOrder.rentalValue, 0);
     state.newOrder.totalValue = totalValue;
 
@@ -48,15 +46,15 @@ export const useCartStore = defineStore("cart", () => {
   }
 
   function addBookOrders(bookOrder: BookOrder) {
-    const bookIncluded = state.newOrder.bookOrders.findIndex((orders) => orders.productId === bookOrder.productId);
-    
+    const bookIncluded = state.newOrder.bookOrders.findIndex((orders: { productId: any; }) => orders.productId === bookOrder.productId);
+
     if (bookIncluded !== -1) {
       state.newOrder.bookOrders[bookIncluded] = bookOrder;
     } else {
       state.newOrder.bookOrders.push(bookOrder);
     }
     const totalValue = state.newOrder.bookOrders.reduce((acc, bookOrder) => acc + bookOrder.rentalValue, 0);
-    
+
     state.newOrder.totalValue = totalValue;
   }
 
