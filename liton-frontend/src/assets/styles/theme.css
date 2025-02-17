@@ -1,0 +1,95 @@
+@import "tailwindcss";
+@config "../../../tailwind.config.js";
+@import './custom.css';
+
+:root {
+  --font-family: "Lato", serif;
+  --font-display: "Red Hat Display", serif;
+}
+@layer base {
+  :root {
+    --background: #f6f8fa;
+    --foreground: #282828;
+
+    --muted: #636363;
+    --muted-foreground: #282828;
+
+    --popover: #fffefd;
+    --popover-foreground: #282828;
+
+    --card: #fffefd;
+    --card-foreground: #0a0c16;
+
+    --border: #fffefd;
+    --input: #282828;
+
+    --primary: #282828;
+    --primary-foreground: #fffefd;
+
+    --secondary: #fffefd;
+    --secondary-foreground: #636363;
+
+    --accent: #C0C0C0;
+    --accent-foreground: #0f253b;
+
+    --destructive: #ff4747;
+    --destructive-foreground: #fbfcfd;
+
+    --ring: #0a0c16;
+    --dark: #636363;
+
+    --radius: 0.5rem;
+    --success: #43a349;
+    --error: #ce3737;
+    --warning: #e4a745;
+  }
+
+  .dark {
+    --background: #3b3b3b;
+    --foreground: #fffefd;
+
+    --muted: #182032;
+    --muted-foreground: #a3b1c2;
+
+    --popover: #182032;
+    --popover-foreground: #fffefd;
+
+    --card: #fbfcfd;
+    --card-foreground: #3b3b3b;
+
+    --border: #fffefd;
+    --input: #fffefd;
+
+    --primary: #fffefd;
+    --primary-foreground: #636363;
+
+    --secondary: #636363;
+    --secondary-foreground: #fbfcfd;
+
+    --accent: #fffefd;
+    --accent-foreground: #fffefd;
+
+    --destructive: #8a1c1c;
+    --error: #8a1c1c;
+    --destructive-foreground: #fbfcfd;
+    --ring: #dfe3e8;
+  }
+}
+
+html,
+body,
+#app {
+  min-height: 100vh;
+}
+
+#app,
+body {
+  font-family: var(--font-family);
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 2.5s;
+}
+
+#app {
+  height: auto;
+}

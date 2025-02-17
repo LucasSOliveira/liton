@@ -1,0 +1,22 @@
+{
+  "files": [],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "assets/*": ["src/assets/*"],
+      "utils/*": ["src/utils/*"],
+    },
+    "lib": [
+      "ES2015"
+    ]
+  },
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}
