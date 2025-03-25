@@ -17,9 +17,8 @@ A aplicação foi construída seguindo uma arquitetura modular que separa as res
   - **JWT & AuthModule: cookies HTTP-only.**
   - **Integração com Open Library para Busca e armazenamento dinâmico de livros.**
 
-- **Containerização e Deploy:**
+- **Containerização:**
   - **Docker Compose:** Orquestração dos containers para frontend, backend e banco de dados.
-  - **Koyeb (opcional):** Deploy na nuvem usando Docker Compose.
 
 ---
 
@@ -27,7 +26,7 @@ A aplicação foi construída seguindo uma arquitetura modular que separa as res
 
 - **Frontend:** Vue 3, Vite, Pinia, Tailwind CSS, shadcn-vue, i18n.
 - **Backend:** NestJS, TypeScript, TypeORM, PostgreSQL, JWT.
-- **DevOps:** Docker, Docker Compose, (Koyeb para deploy).
+- **DevOps:** Docker, Docker Compose.
 
 ## Como Rodar o Projeto
 
